@@ -1,7 +1,7 @@
 package me.scidev.spigotIdeaGenerator.ideaText;
 
 public enum TextSnippetType {
-	THING, PERSON, ACTION, LOCATION;
+	THING, PERSON, ACTION, LOCATION, BASE;
 	
 	public static TextSnippetType getByName(String name) {
 		if (name.equalsIgnoreCase("THING")) {
@@ -15,6 +15,9 @@ public enum TextSnippetType {
 		}
 		else if (name.equalsIgnoreCase("LOCATION")) {
 			return LOCATION;
+		}
+		else if (name.equalsIgnoreCase("BASE")) {
+			return BASE;
 		}
 		else {
 			return null;

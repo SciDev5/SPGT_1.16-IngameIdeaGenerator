@@ -47,4 +47,10 @@ public class TextSnippet {
 	public TextSnippetType[] getReplacerTypes() {
 		return this.replacerTypes.clone();
 	}
+	
+	public static TextSnippet parseSnippetString(String textIn) {
+		int indexOfSplit = textIn.indexOf(":");
+		TextSnippetType type = TextSnippetType.getByName(textIn.substring(0, indexOfSplit));
+		return new TextSnippet(type, textIn.substring(indexOfSplit));
+	}
 }
