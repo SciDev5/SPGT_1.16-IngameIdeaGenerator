@@ -1,0 +1,8 @@
+name: IdeaGenerator
+version: 0.0.0
+author: SciDev
+api-version: 1.16
+main: me.scidev.spigotIdeaGenerator.Main
+commands:
+   idea:
+      description: "Come up with a brilliant idea."
