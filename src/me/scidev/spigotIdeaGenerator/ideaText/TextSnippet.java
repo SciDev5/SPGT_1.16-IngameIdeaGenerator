@@ -51,6 +51,6 @@ public class TextSnippet {
 	public static TextSnippet parseSnippetString(String textIn) {
 		int indexOfSplit = textIn.indexOf(":");
 		TextSnippetType type = TextSnippetType.getByName(textIn.substring(0, indexOfSplit));
-		return new TextSnippet(type, textIn.substring(indexOfSplit));
+		return new TextSnippet(type, textIn.substring(indexOfSplit+1));
 	}
 }
