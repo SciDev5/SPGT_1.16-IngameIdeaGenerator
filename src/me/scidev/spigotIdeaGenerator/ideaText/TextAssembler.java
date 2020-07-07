@@ -60,4 +60,9 @@ public class TextAssembler {
 		// Assemble the text into the snippet.
 		return snippetIn.spliceTextIn(subSnippetStrings);
 	}
+	
+	// Get a random base snippet.
+	public static TextSnippet randomBaseSnippet() {
+		return TextAssembler.randomSnippetByType(TextSnippetType.BASE);
+	}
 }
