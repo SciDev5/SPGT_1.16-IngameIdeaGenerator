@@ -14,6 +14,7 @@ public class TextSnippet {
 		
 		// Get the number of subsections by finding the number of spaces in this.textSections by taking its length - 1. 
 		int numTextSubSections = this.textSections.length-1;
+		if (textIn.matches("%.*?%$")) numTextSubSections++;
 		this.replacerTypes = new TextSnippetType[numTextSubSections];
 
 		// Every odd element inside replacerTypeStrings is inside a % sign and is meant to be a replacer type, select by name and insert into array.
