@@ -6,3 +6,10 @@ main: me.scidev.spigotIdeaGenerator.Main
 commands:
    idea:
       description: "Come up with a brilliant idea."
+permissions:
+   spigotIdeaGenerator.commands.*:
+      default: true
+      children:
+         spigotIdeaGenerator.commands.idea.use: true
+   spigotIdeaGenerator.commands.idea.use:
+      default: true
