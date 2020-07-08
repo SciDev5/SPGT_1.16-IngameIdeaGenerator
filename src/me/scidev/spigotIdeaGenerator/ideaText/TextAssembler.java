@@ -8,18 +8,18 @@ import java.util.Random;
 
 public class TextAssembler {
 	
-	private static Map<TextSnippetType,List<TextSnippet>> allTextSnippets;
+	private static Map<String,List<TextSnippet>> allTextSnippets;
 	private static Random random;
 
 	public static void init() {
 		// Initialize variables.
-		allTextSnippets = new HashMap<TextSnippetType, List<TextSnippet>>();
+		allTextSnippets = new HashMap<String, List<TextSnippet>>();
 		random = new Random();
 	}
 	
 	public static void addSnippet(TextSnippet snippet) {
 		// Get the list corresponding with the new snippet's type to insert into.
-		TextSnippetType snippetType = snippet.getType();
+		String snippetType = snippet.getType();
 		List<TextSnippet> snippetGroup = allTextSnippets.get(snippetType);
 		
 		// If the snippetGroup is null, create it and insert it into the map.
@@ -33,7 +33,7 @@ public class TextAssembler {
 			snippetGroup.add(snippet);
 	}
 	
-	private static TextSnippet randomSnippetByType(TextSnippetType type) {
+	private static TextSnippet randomSnippetByType(String type) {
 		// Get the list corresponding with the new snippet's type to insert into.
 		List<TextSnippet> snippetGroup = allTextSnippets.get(type);
 		
@@ -48,7 +48,7 @@ public class TextAssembler {
 	
 	public static String assembleSnippet(TextSnippet snippetIn) {
 		// Get the replacerTypes of text to substitute into the current snippet.
-		TextSnippetType[] replacerTypes = snippetIn.getReplacerTypes();
+		String[] replacerTypes = snippetIn.getReplacerTypes();
 		String[] subSnippetStrings = new String[replacerTypes.length];
 		
 		// Select and fill in random snippets according to the replacerTypes from the snippet.
@@ -63,6 +63,6 @@ public class TextAssembler {
 	
 	// Get a random base snippet.
 	public static TextSnippet randomBaseSnippet() {
-		return TextAssembler.randomSnippetByType(TextSnippetType.BASE);
+		return TextAssembler.randomSnippetByType("BASE");
 	}
 }

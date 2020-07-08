@@ -2,25 +2,26 @@ package me.scidev.spigotIdeaGenerator.ideaText;
 
 public class TextSnippet {
 	
-	private TextSnippetType textType;
+	private String textType;
 	private String[] textSections;
-	private TextSnippetType[] replacerTypes;
+	private String[] replacerTypes;
 	
 	// textIn should contain '%type%' for where more text should be spliced in. Order determines what replacer type will be used.
-	public TextSnippet(TextSnippetType thisTypeIn, String textIn) {
+	public TextSnippet(String thisTypeIn, String textIn) {
 
 		this.textType = thisTypeIn;
 		this.textSections = textIn.split("%.*?%");
 		
 		// Get the number of subsections by finding the number of spaces in this.textSections by taking its length - 1. 
 		int numTextSubSections = this.textSections.length-1;
-		if (textIn.matches("%.*?%$")) numTextSubSections++;
-		this.replacerTypes = new TextSnippetType[numTextSubSections];
-
+		if (textIn.matches(".*?%.*?%$")) 
+			numTextSubSections++;
+		this.replacerTypes = new String[numTextSubSections];
+		
 		// Every odd element inside replacerTypeStrings is inside a % sign and is meant to be a replacer type, select by name and insert into array.
 		String[] replacerTypeStrings = textIn.split("%");
 		for (int i = 1; i < replacerTypeStrings.length; i += 2) {
-			this.replacerTypes[i / 2] = TextSnippetType.getByName(replacerTypeStrings[i]);
+			this.replacerTypes[i / 2] = replacerTypeStrings[i].toUpperCase();
 		}
 	}
 	
@@ -41,17 +42,17 @@ public class TextSnippet {
 		return result;
 	}
 	
-	public TextSnippetType getType() {
+	public String getType() {
 		return this.textType;
 	}
 	
-	public TextSnippetType[] getReplacerTypes() {
+	public String[] getReplacerTypes() {
 		return this.replacerTypes.clone();
 	}
 	
 	public static TextSnippet parseSnippetString(String textIn) {
 		int indexOfSplit = textIn.indexOf(":");
-		TextSnippetType type = TextSnippetType.getByName(textIn.substring(0, indexOfSplit));
+		String type = textIn.substring(0, indexOfSplit).toUpperCase();
 		return new TextSnippet(type, textIn.substring(indexOfSplit+1));
 	}
 }
