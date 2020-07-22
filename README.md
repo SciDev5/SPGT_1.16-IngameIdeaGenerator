@@ -1,4 +1,4 @@
-# SPGT_1.16-IngameIdeaGenerator
+# SPGT-1.16_IngameIdeaGenerator
 Spigot plugin, Minecraft 1.16. Generates ideas so you can have cool ideas.
 
 __WIP__
